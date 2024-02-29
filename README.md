@@ -21,7 +21,7 @@ These are not my contracts and I don't know who deployed them. I don't know more
 
 There could be multiple issues so I've provided multiple many inputs when the issues show up.
 
-To test each input (different from, to, data and blockNumber) just change the array index (values between 0..8) @ line 207
+To test each input (different from, to, data and blockNumber) just change the array index (values between 0..9) @ line 214
 
 `const input = inputs[0];`
 
@@ -31,4 +31,8 @@ Index 8 input triggers out of stack during execution
 
 Indices 0..4 I didn't fully check but they should be status 1 txs and have no exec issues.
 
-The description might be confusing: all 9 of these inputs should trigger a debug_traceTransaction deadlock.
+Index 9 is the one that goes up to 14 GB of memory. My further tests revelead that it uses 13GB during tx execution, goes down as expected after, then it does so again during debug_traceTransaction
+
+The description might be confusing: all 10 of these inputs should trigger a debug_traceTransaction deadlock.
+
+Try any other valid block number (at least hours apart) for any of the example if for some reason they seem to work on your end.
